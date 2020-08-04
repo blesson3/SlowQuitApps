@@ -114,7 +114,14 @@
         stateMachine.onCompletion = ^{
             NSRunningApplication *app = findActiveApp();
             if (app) {
-                [app terminate];
+                // check if we should hide vs quit
+                BOOL shouldHide = [[SQAPreferences appsToHide] containsObject:app.bundleIdentifier];
+                if (shouldHide) {
+                    [app hide];
+                }
+                else {
+                    [app terminate];
+                }
             }
             [weakOverlay hideOverlay];
             [weakOverlay resetOverlay];

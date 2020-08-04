@@ -4,6 +4,7 @@
 
 + (NSInteger)delay;
 + (NSArray<NSString *> *)whitelist;
++ (NSArray<NSString *> *)appsToHide;
 + (BOOL)invertList;
 + (BOOL)displayOverlay;
 + (BOOL)disableAutostart;

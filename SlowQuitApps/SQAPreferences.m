@@ -9,6 +9,7 @@
       NSDictionary *defaults = @{
                                  @"delay": @1000,
                                  @"whitelist": @[],
+                                 @"appsToHide": @[],
                                  @"invertList": @NO,
                                  @"displayOverlay": @YES,
                                  @"disableAutostart": @NO
@@ -44,6 +45,14 @@
         whitelist = [[self defaults] stringArrayForKey:@"whitelist"];
     }
     return whitelist;
+}
+
++ (NSArray<NSString *> *)appsToHide {
+    static NSArray<NSString *> *appsToHide;
+    if (appsToHide == NULL) {
+        appsToHide = [[self defaults] stringArrayForKey:@"appsToHide"];
+    }
+    return appsToHide;
 }
 
 + (BOOL)invertList {
