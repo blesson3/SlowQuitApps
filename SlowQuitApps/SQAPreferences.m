@@ -32,7 +32,7 @@
     static NSInteger delay;
     if (delay == 0) {
         delay = [[self defaults] integerForKey:@"delay"];
-        if (delay <= 0) {
+        if (delay < 0) {
             delay = 1000;
         }
     }

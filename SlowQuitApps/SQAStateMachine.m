@@ -53,6 +53,15 @@ typedef NS_ENUM(NSInteger, SQAMachineState) {
             if (onStart) {
                 onStart();
             }
+            // is delay == 0, then it's completed
+            if (self.progress < 1) {
+                return;
+            }
+            dispatch_source_cancel(timer);
+            currentState = SQAStateMachineCompleted;
+            if (onCompletion) {
+                onCompletion();
+            }
             break;
         case SQAStateMachineHolding:
             lastUpdate = CACurrentMediaTime();
